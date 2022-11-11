@@ -1,0 +1,234 @@
+I"�+<p><a href="https://github.com/Max-Coin/maxcoin-seeder">maxcoin-seeder</a> is a crawler for the MaxCoin network, which exposes a list
+of reliable nodes via a built-in DNS server. It is a fork of bitcoin-seeder.</p>
+
+<h2 id="features">FEATURES</h2>
+<ul>
+  <li>Regularly revisits known nodes to check their availability</li>
+  <li>Bans nodes after enough failures, or bad behaviour</li>
+  <li>Accepts nodes down to v0.3.19 to request new IP addresses from,
+but only reports good post-v0.3.24 nodes.</li>
+  <li>Keeps statistics over (exponential) windows of 2 hours, 8 hours,
+1 day and 1 week, to base decisions on.</li>
+  <li>Very low memory (a few tens of megabytes) and cpu requirements.</li>
+  <li>Crawlers run in parallel (by default 96 threads simultaneously).</li>
+</ul>
+
+<h2 id="requirements">REQUIREMENTS</h2>
+
+<ul>
+  <li>Debian based GNU/linux without systemd-resolvd (recommended Ubuntu 16.04).</li>
+  <li>Have a public IP Address with access to the port 53</li>
+  <li>Have a domain name and access to configure registries on it.</li>
+  <li>build-essential</li>
+  <li>libboost-all-dev</li>
+  <li>libssl-dev</li>
+</ul>
+
+<blockquote>
+  <p>Note: if your OS has systemd-resolvd reference to Known  the <code class="language-plaintext highlighter-rouge">KNOWN ISSUES</code> section</p>
+</blockquote>
+
+<h3 id="install-dependencies">Install dependencies:</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>build-essential libboost-all-dev libssl-dev
+</code></pre></div></div>
+
+<h2 id="compiling">COMPILING</h2>
+<p>First we get the repository maxcoin-seeder code</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git clone https://github.com/Max-Coin/maxcoin-seeder
+<span class="nv">$ </span><span class="nb">cd </span>maxcoin-seeder
+</code></pre></div></div>
+
+<p>Compiling will require boost and ssl.  On debian systems, these are provided
+by <code class="language-plaintext highlighter-rouge">libboost-dev</code> and <code class="language-plaintext highlighter-rouge">libssl-dev</code> respectively.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>make
+</code></pre></div></div>
+
+<p>This will produce the <code class="language-plaintext highlighter-rouge">dnsseed</code> binary.</p>
+
+<h2 id="usage">USAGE</h2>
+<blockquote>
+  <p>Best practice is to have a maxcoin daemon with the blockchain on the same server as a public node</p>
+</blockquote>
+
+<p>Assuming you want to run a dns seed on dnsseed.example.com, you will
+need an authorative NS record in example.com’s domain record, pointing
+to for example vps.example.com:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ dig -t NS dnsseed.example.com
+
+;; ANSWER SECTION
+dnsseed.example.com.   86400    IN      NS     vps.example.com.
+</code></pre></div></div>
+
+<p>On the system vps.example.com, you can now run dnsseed:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./dnsseed -h dnsseed.example.com -n vps.example.com
+</code></pre></div></div>
+
+<blockquote>
+  <p>If you want the DNS server to report SOA records, please provide an
+e-mail address (with the @ part replaced by .) using -m.</p>
+</blockquote>
+
+<h3 id="usage-with-testnet-enabled">Usage with testnet enabled</h3>
+<blockquote>
+  <p>Best practice is to have a maxcoin daemon with the testnet blockchain on the same server as a public node</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./dnsseed --testnet -h dnsseed.example.com -n vps.example.com
+</code></pre></div></div>
+
+<h3 id="usage-with-tor-enabled">Usage with tor enabled</h3>
+
+<h4 id="server-side">Server Side</h4>
+<blockquote>
+  <p>Requirement: install tor (# apt install tor)
+if you follow this tutorial
+<a href="https://en.bitcoin.it/wiki/Setting_up_a_Tor_hidden_service">How To Setup tor node</a>
+<strong><em>Remember that Maxcoin uses 8668 tcp port and 18668 for the testnet</em></strong></p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./dnsseed -o 127.0.0.1:9050 -h dnsseed.example.com -n vps.example.com
+</code></pre></div></div>
+
+<h4 id="client-side">Client Side</h4>
+<blockquote>
+  <p>Requirement: install tor (# apt install tor)</p>
+</blockquote>
+
+<p>First, you can just add it to the command line:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ maxcoind -proxy=127.0.0.1:9050 -addnode=mqrlomy4wdddohem.onion:8668 -listen -debug=tor</code></p>
+
+<p>Or you can add it to your maxcoin.conf file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proxy=127.0.0.1:9050
+addnode=mqrlomy4wdddohem.onion:8668
+listen=1
+debug=tor
+</code></pre></div></div>
+
+<p>The debug param tells it to print info about tor when the service comes up so you can see if anything is not working.</p>
+
+<p>When you bring up the service, you should see a statement like</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> mqrlomy4wdddohem.onion:8668 is an official maxcoin tor dnsseed address.</p>
+</blockquote>
+
+<h2 id="running-as-non-root">RUNNING AS NON-ROOT</h2>
+
+<p>Typically, you’ll need root privileges to listen to port 53 (name service).</p>
+
+<p>One solution is using an iptables rule (Linux only) to redirect it to
+a non-privileged port:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>iptables <span class="nt">-t</span> nat <span class="nt">-A</span> PREROUTING <span class="nt">-p</span> udp <span class="nt">--dport</span> 53 <span class="nt">-j</span> REDIRECT <span class="nt">--to-port</span> 5353
+</code></pre></div></div>
+
+<p>If properly configured, this will allow you to run dnsseed in userspace, using
+the -p 5353 option.</p>
+
+<h2 id="known-issues">KNOWN ISSUES</h2>
+
+<p>SPECIAL INSTRUCTIONS FOR UBUNTU USERS</p>
+
+<p>All Ubuntu releases starting with 16.10 (first released in October 2016) come installed with <a href="https://www.freedesktop.org/software/systemd/man/systemd-resolved.service.html">systemd-resolved</a>, which effectively prevents the seeder’s built-in DNS server from working correctly. This is due to both applications requiring use of port 53, and systemd-resolved takes priority by default. There are a few ways to resolve this issue:</p>
+
+<p>1.- Force the seeder to bind to a specific IP address by adding the following argument to the terminal cmd: <code class="language-plaintext highlighter-rouge">-a &lt;ip address&gt;</code>. This is the recommended solution as it doesn’t require disabling of any operating system services.</p>
+
+<p>Example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo ./dnsseed -h dnsseed.example.com -n vps.example.com -a 123.231.123.231
+</code></pre></div></div>
+
+<p>2.- Disable binding of systemd-resolved to port 53 by editing the <code class="language-plaintext highlighter-rouge">/etc/systemd/resolved.conf</code> file and adding this line to the bottom of the file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DNSStubListener=no
+</code></pre></div></div>
+
+<p>Save and reboot, and now systemd-resolved will no longer interfere with the seeder’s DNS server.</p>
+
+<blockquote>
+  <p><strong>NOTE:</strong> This method is only supported by systemd 232 and newer. You can check your version of systemd with the cmd: <code class="language-plaintext highlighter-rouge">systemctl --version</code></p>
+</blockquote>
+
+<p>3.- Completely disable the systemd-resolved service with the following cmds (not recommended as it may cause undesired side-effects if you use the same server for anything other than running the seeder app):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo systemctl disable systemd-resolved
+sudo systemctl stop systemd-resolved
+</code></pre></div></div>
+
+<h3 id="fix-known-issues-after-procedure-2-or-3">FIX KNOWN ISSUES AFTER PROCEDURE 2 OR 3</h3>
+
+<p>Sometimes after the procedure 2 or 3 there is an issue with the dns resolving addresses so it is recommended to follow this solution:</p>
+
+<p>1.- Delete the resolv.conf file:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo rm</span> <span class="nt">-f</span> /etc/resolv.conf
+</code></pre></div></div>
+
+<p>2.- Edit, add dns servers configs and write the file.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /etc/resolv.conf
+</code></pre></div></div>
+<blockquote>
+  <p>Example config at the /etc/resolv.conf file:</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nameserver 1.1.1.1
+nameserver 1.0.0.1
+~
+</code></pre></div></div>
+
+<p>3.- Set linux file system file attribute to cannot be modified</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>chattr +i /etc/resolv.conf 
+</code></pre></div></div>
+
+<p>4.- Restart the network config depeding on your configuration</p>
+
+<blockquote>
+  <p>Option 1:</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> /etc/init.d/networking restart 
+</code></pre></div></div>
+
+<blockquote>
+  <p>Option 2:</p>
+</blockquote>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>netplan apply
+</code></pre></div></div>
+
+<h2 id="todo">ToDo</h2>
+<ul>
+  <li>Support Linux systems with systemd-resolvd service</li>
+  <li>Support the new tor v3 addresses</li>
+  <li>Add to the virtual machines images with an autoconfig script.</li>
+</ul>
+
+<h2 id="contact">CONTACT</h2>
+
+<p><strong><em>Developers</em></strong></p>
+<ul>
+  <li><a href="https://twitter.com/getmaxcoin">David Serrano</a></li>
+  <li><a href="mailto:p1r0@nethunters.xyz">p1r0</a></li>
+  <li><a href="https://t.me/maxcoinproject">Maxcoin telegram group</a></li>
+</ul>
+
+<h2 id="references">REFERENCES</h2>
+
+<ol>
+  <li><a href="https://github.com/Max-Coin/maxcoin-seeder">maxcoin-seeder</a></li>
+  <li><a href="https://github.com/pooler/litecoin-seeder/blob/master/README">Litecoin Seeder README</a></li>
+  <li><a href="https://github.com/guapcrypto/DNS-Seeder/blob/main/README.md">Systemd issues</a></li>
+  <li><a href="https://www.youtube.com/watch?v=DsaxbwwVEXk">Video seeder example setup</a></li>
+  <li><a href="https://en.bitcoin.it/wiki/Setting_up_a_Tor_hidden_service">Node tor configs for bitcoin</a></li>
+  <li><a href="https://linuxhint.com/set-dns-name-servers-ubuntu-linux/">Set dns servers for ubuntu</a></li>
+</ol>
+:ET

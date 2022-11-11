@@ -1,0 +1,78 @@
+I"�<p>This is a HOW TO build and run “The Maxcoin Core Wallet” with VirtualBox</p>
+
+<blockquote>
+  <p>Maxcoin’s enhacements are being done using VirtualBox for testing and developing the wallet.
+Please follow this manual to keep up with maxcoin standards.</p>
+</blockquote>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li><a href="https://www.virtualbox.org/">VirtualBox</a></li>
+  <li><a href="https://www.7-zip.org/">7Zip</a> or some other program to un7zip</li>
+  <li><a href="https://www.osboxes.org/ubuntu/">Ubuntu 18.04.3 VDI</a>
+    <ul>
+      <li>VirtualBox (VDI) 64bit  Size: 1.5GB approx.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="install-and-setup-the-environment">Install and Setup the environment</h2>
+
+<ol>
+  <li>Download and install <a href="https://www.7-zip.org/">7Zip</a> or already have a software that can un7zip 7zip files.</li>
+  <li>Download <a href="https://www.virtualbox.org/">VirtualBox</a> from https://www.virtualbox.org/wiki/Downloads and get the one that fits your Operative System.</li>
+  <li>Download the <a href="https://www.osboxes.org/ubuntu/">Ubuntu 18.04.3 VDI</a> (this is the virtualbox image)</li>
+  <li>Install virtualbox following one of the manuals
+    <ul>
+      <li>For windows follow the <a href="https://www.wikihow.com/Install-VirtualBox">Part 1 only</a></li>
+      <li>For MacOS follow the <a href="https://www.wikihow.com/Install-VirtualBox">Part 2 only</a></li>
+      <li>For Linux follow the <a href="https://www.wikihow.com/Install-VirtualBox">Part 3 only</a></li>
+    </ul>
+  </li>
+  <li>un7zip the downloaded VDI 7zip file</li>
+  <li>Follow the osboxes guide to setup the extracted image https://www.osboxes.org/guide/ at the VirtualBox Section</li>
+</ol>
+
+<h2 id="setupmount-a-folder-to-share-between-guest-and-host">Setup/Mount a folder to share between guest and host.</h2>
+
+<p>To setup a shared folder between guest and host use <a href="https://helpdeskgeek.com/virtualization/virtualbox-share-folder-host-guest/"><em>this guide</em></a></p>
+
+<blockquote>
+  <p><strong>NOTE:</strong>
+The guest folder is used for dev and git updates.
+The host folder is used to compile and run source code in the guest folder.</p>
+</blockquote>
+
+<hr />
+<h2 id="license">License</h2>
+
+<p><a href="./LICENSE"><strong>UNLICENSE</strong></a>.</p>
+
+<h2 id="contact">Contact.</h2>
+
+<p><strong><em>Developers</em></strong></p>
+<ul>
+  <li><a href="https://twitter.com/getmaxcoin">David Serrano</a></li>
+  <li><a href="mailto:p1r0@nethunters.xyz">p1r0</a></li>
+</ul>
+
+<h2 id="todoproposals">ToDo/Proposals</h2>
+
+<ul>
+  <li>Use a smaller VirtualBox Image (to reduce resources and increase speed)
+    <ul>
+      <li>ubuntu server lts</li>
+      <li>lubuntu</li>
+    </ul>
+  </li>
+  <li>Integrate the linked manuals to the main howto and use them as references instead</li>
+  <li>Check license for documentation</li>
+</ul>
+
+<h2 id="links--references">Links &amp; References</h2>
+<ol>
+  <li><a href="https://github.com/Max-Coin/virtualbox-dev-environment">Document Source</a></li>
+</ol>
+
+:ET

@@ -1,0 +1,262 @@
+I"�:<p>Some perspectives and philosophies to follow:</p>
+
+<blockquote>
+  <ul>
+    <li>keep it simple and stupid</li>
+    <li>Website navigation based on user types</li>
+    <li>Website navigation to simplified fit everything</li>
+    <li>Documentation Organized by user types and labels</li>
+    <li>Website features</li>
+    <li>References</li>
+  </ul>
+</blockquote>
+
+<h1 id="website-navigation-based-on-user-types">Website navigation based on user types</h1>
+
+<p>The goal is to analyze the maxcoin users type and what type of requirements for consulting maxcoin website they might have. We intend to make the website developers oriented, in order to attract more developers into the project.</p>
+
+<ul>
+  <li>Users/Investors/HODLers (Pasive)
+  require:
+    <ul>
+      <li>Documentation</li>
+      <li>FAQ</li>
+      <li>Explorer</li>
+    </ul>
+  </li>
+  <li>Traders (Pasive)
+  require:
+    <ul>
+      <li>Documentation?</li>
+      <li>Explorer</li>
+      <li>Features</li>
+      <li>Summary</li>
+      <li>RELASE DATES (No DATES)</li>
+    </ul>
+  </li>
+  <li>Community (Active)
+  require:
+    <ul>
+      <li>Documentation (Governance, Support, etc..)</li>
+      <li>FAQ</li>
+      <li>Social Media</li>
+      <li>Profiles or anon?</li>
+      <li>Organization</li>
+      <li>Manifesto and Philosophy</li>
+    </ul>
+  </li>
+  <li>Governance (Active)
+require:
+    <ul>
+      <li>Documentation (Governance, Support, etc…)</li>
+      <li>Trust or proof of beeing active</li>
+      <li>Organization</li>
+      <li>Profiles or anon?</li>
+      <li>Manifesto and Philosophy</li>
+    </ul>
+  </li>
+  <li>Developers (Priority + Active)
+  require:
+    <ul>
+      <li>Documentation</li>
+      <li>wbsite sources (git, testnet explorer, etc.)</li>
+      <li>Development tools (Projects, Wallets, Dapps, MIP)</li>
+      <li>Best Practices</li>
+      <li>Dev Rules</li>
+    </ul>
+  </li>
+  <li>Miners (Priority + Active)
+  require:
+    <ul>
+      <li>Documentation</li>
+      <li>Mining tools (Projects, Wallets, Dapps)</li>
+      <li>Organization</li>
+      <li>Other?</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="website-navigation-to-simplified-fit-everything">Website navigation to simplified fit everything</h1>
+
+<p>A simple structure to fit everything for everyone</p>
+
+<blockquote>
+  <p>In the current Website we see to many options:</p>
+  <ul>
+    <li>Home (Landing Page must be there)</li>
+    <li>Features</li>
+    <li>Community</li>
+    <li>Roadmap</li>
+    <li>Downloads</li>
+    <li>Mining</li>
+    <li>Exchanges</li>
+    <li>Explorers</li>
+    <li>Media</li>
+  </ul>
+</blockquote>
+
+<h1 id="documentation-based-on-usertypes-and-labels">Documentation based on UserTypes and Labels</h1>
+
+<blockquote>
+  <p>based on the user types and labels I propose two types of browsing for documentation which are the following:</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p><strong>By UserTypes</strong>
+We can create Sections for the most active types of users but also a FAQ and simple abstract version for pasive users.</p>
+  </li>
+  <li>
+    <p><strong>By Labels</strong>
+We create labels per article so that we have a better way to access or manage acording to the amount of article types and specific research areas.</p>
+  </li>
+</ol>
+
+<h1 id="maxcoin-website-index-todo">Maxcoin Website Index (ToDo)</h1>
+<blockquote>
+  <p>Based on the user types, and documentation we propose the following index:</p>
+</blockquote>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Landing (about layout) Static
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />get back  here by clicking the logo? or a small go back button</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />what is maxcoin</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Maxcoin Fundamentals</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Features (summary md)</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Roadmap (based on archives Layout)</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Media
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Articles</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Postcast</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Videos</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Use Maxcoin (about layout) Static [users]
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Downloads</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Wallets
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Maxcoin Core</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />VirtualBox</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Electrum</li>
+        </ul>
+      </li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Explorers</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Exchanges
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />self hosted</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />third parties</li>
+        </ul>
+      </li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />User Documentation</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Developers (Categories layout)
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Includes Roadman Projects</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Projects</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />WebPage</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Maxcoin Features</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Organization</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Resources index (git, testnet explorer, etc.)</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Development tools (Projects, Wallets, Dapps, MIP)</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Best Practices</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Dev Rules</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Community (about layout) Static [users]
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Community Documentation</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />includes Governance / DAO
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Documentation (Governance, Support, etc…)</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Activity Levels</li>
+        </ul>
+      </li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Includes Roadman Projects</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />FAQ</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Manifesto and Philosophy</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Mine Maxcoin (about layout)
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Organization</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Pools</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Software</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Hardware</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Miners Documentation</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Documentation (Categories layout)
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Community
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />FAQ</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />User Documenation</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Community Documentation</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Includes community</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Includes Roadman Projects</li>
+        </ul>
+      </li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Developers
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Git projects</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Features</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Current Projects</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Dev Roadmap</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MRCs (Maxcoin Request for Comments)</li>
+        </ul>
+      </li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Miners
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Pools</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Software</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Hardware</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Miners Documentation</li>
+        </ul>
+      </li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Governance
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Governance documentation</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />DAO</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Testnet</li>
+        </ul>
+      </li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Research
+        <ul class="task-list">
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Resources</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Papers (Articles)</li>
+          <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MIPs (Maxcoin Improvement Proposals)
+            <ul class="task-list">
+              <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://hackmd.io/eHlVUFbITfa-Qt_khyrQjw">MIP02</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Links all types of documentation</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Decentralized Gateways</li>
+</ul>
+
+<h1 id="website-features">Website features</h1>
+
+<ul>
+  <li>Light and Dark Mode</li>
+  <li>Language access</li>
+  <li>Others…</li>
+</ul>
+
+<h1 id="cool-reference-sites">Cool Reference Sites</h1>
+
+<ul>
+  <li>https://docs.uniswap.org/sdk/guides/quick-start</li>
+  <li>https://xrpl.org/concepts.html</li>
+  <li>https://ethereum.org/en/community/grants/</li>
+  <li>https://vitalik.ca/</li>
+</ul>
+
+:ET

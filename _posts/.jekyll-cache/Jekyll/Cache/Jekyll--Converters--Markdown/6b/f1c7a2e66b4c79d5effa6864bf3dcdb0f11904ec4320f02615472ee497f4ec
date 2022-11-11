@@ -1,0 +1,94 @@
+I"&<h2 id="dmax">DMAX</h2>
+
+<h2 id="abstract">Abstract</h2>
+
+<p>The Maxcoin DAO provides the governance and incentive participation Maxcoin Project needs to develop and make decisions in a decentralized manner, all whilst making Maxcoin a deflationary currency. In the following document we describe the technologies, protocols and processes that make it work.</p>
+
+<h2 id="dmax-features">DMAX Features</h2>
+
+<ul>
+  <li>DAO verified 1 to 1 with the ERC20 token (DMAX)</li>
+  <li>With a burn address, maxcoin (max) becomes deflationary.</li>
+  <li>10000 Maxcoin Minimum with a signed address going to the maxcoin burn address.</li>
+  <li>DMAX becomes an Ethereum ERC20 Token.</li>
+  <li>Anyone can participate in and have voting power based on token amount.</li>
+  <li>To have a built-in incentives for dao users to verify maxcoins sent to burn address and verify DMAX tokens.</li>
+</ul>
+
+<h2 id="protocols-and-tech-requirements">Protocols and Tech Requirements</h2>
+
+<ol>
+  <li>Maxcoin Project.</li>
+  <li>Ethereum Platform.</li>
+  <li>Aragon Client (DAO and Quadratic Voting).</li>
+  <li>Aragon Agent (DMAX management).</li>
+</ol>
+
+<h2 id="actors-and-systems-use-case">Actors and Systems Use Case</h2>
+<ul>
+  <li>Maxcoin User</li>
+  <li>Maxcoin User Wallets (Maxcoin and Ethereum)</li>
+  <li>Maxcoin DAO (Votes and verifies)</li>
+  <li>Maxcoin DAO Tech (Aragorn, Ethereum Network, etc..)</li>
+  <li>Maxcoin Blockchain Tech (Burning Address)</li>
+</ul>
+
+<blockquote>
+  <p>Note: ToDo… use case diagram</p>
+</blockquote>
+
+<h2 id="process-description">Process Description</h2>
+
+<ol>
+  <li>The Maxcoin user sends Maxcoin to the burning address</li>
+  <li>The Maxcoin user creates a request with the Transaction ID (TxID) at the Maxcoin DAO (based on Aragon client and Aragon Agent) And the Ethereum wallet address that will receive the DMAX token.</li>
+  <li>The Maxcoin DAO Members and already DMAX Holders will have the possibility to participate in the verification process. By doing Quadratic Voting (Aragon client module) we will generate a DMAX paired 1:1 with the burned Maxcoins, the DAO might take a small fee for voting and doing the process (this fee is to incentivize voters and get faster verifications)</li>
+  <li>The Maxcoin user gets DMAX in their Ethereum Wallet.</li>
+</ol>
+
+<h2 id="sequence-diagram">Sequence Diagram</h2>
+
+<p><img src="/assets/img/posts/sequenceDiagramDAO.png" alt="Sequence Diagram" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sequenceDiagram
+    MaxcoinBlockchain-&gt;&gt;+BurnAddress: User Sends Maxcoin
+    MaxcoinBlockchain-&gt;&gt;+MaxcoinDAO: Notifies to DAO and sends DMAX address
+    MaxcoinDAO-&gt;&gt;+MaxcoinDAO: Creates a ballot for verifiers
+    loop Verification Process
+        MaxcoinDAO-&gt;&gt;+BurnAddress: MaxcoinDAO Verifies transaction
+        alt it was Approved
+            MaxcoinDAO-&gt;&gt;+MaxcoinDAO: Mints DMAX To The Onwers wallet - fee
+            MaxcoinDAO-&gt;&gt;+MaxcoinDAO: fee gets distributed to the DAO participants
+        else it was not
+            MaxcoinDAO--&gt;&gt;-MaxcoinBlockchain: Please verify
+        end
+    end
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note Actors wheren´t added, hope someone can make it better soon… -P1r0
+the mermaid code is not getting interpreted… ToFix</p>
+</blockquote>
+
+<h2 id="references">References</h2>
+
+<ol>
+  <li><a href="/posts/dao-resources/">Maxcoin DAO resources</a></li>
+</ol>
+
+<h2 id="contact">Contact.</h2>
+
+<p><strong><em>Developers</em></strong></p>
+<ul>
+  <li><a href="https://twitter.com/getmaxcoin">David Serrano</a></li>
+  <li><a href="mailto:p1r0@nethunters.xyz">p1r0</a></li>
+</ul>
+
+<h4 id="to-do">To Do</h4>
+
+<ul>
+  <li>Create the tokenomics section</li>
+  <li>Add a conclusion section if required, but might require the DAOs review and further development.</li>
+</ul>
+:ET

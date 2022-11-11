@@ -1,0 +1,136 @@
+I"+<p>Currently we have three images supporting virtualbox, vmware and kvm. They come with precompiled maxcoin wallet, the images just require you to setup the maxcoin.conf file, setup your password, and you are ready to sync!</p>
+
+<h2 id="1-download-the-image-for-your-preferred-virtualization-software">1. Download the image for your preferred virtualization software.</h2>
+
+<ul>
+  <li><a href="https://mega.nz/file/oNwkjC6L#6TdQJ_B-lPoxRO_MCzEFOHkUP5Z8YuFnQi9jJTvU7Pw">KVM image</a></li>
+  <li><a href="https://mega.nz/file/lIoQAQJb#d_VENtWpuVLg2aegGGMQAkc-ifYKH7vOB1uEGhdsWpk">VirtualBox image</a></li>
+  <li><a href="https://mega.nz/file/ZYgBkTBb#geLqMwUc0qr_SZpuViACIxR6QLL5MuL1zFmsGNwaZGg">VMWARE image</a></li>
+</ul>
+
+<blockquote>
+  <p><strong>NOTE:</strong> Once downloaded, you must verify the images integrity which should match the sha256 checksum hash compare it with the <a href="https://mega.nz/file/5ARjiSbb#aiuiioyxS1UpvoomzGm57uc1i1blpPyS8sPe-bEIRH4">checksums-images.txt</a>.</p>
+</blockquote>
+
+<h2 id="login-inf">Login Inf</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>maxcoin</td>
+      <td>maxcoin</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>NOTE:</strong> the maxcoin user is sudoer</p>
+</blockquote>
+
+<h2 id="install-and-setup-the-virtual-machine-for-virtualbox">Install and Setup the virtual machine for VirtualBox</h2>
+
+<ol>
+  <li>Download and install <a href="https://www.7-zip.org/">7Zip</a> or already have a software that can un7zip 7zip files.</li>
+  <li>Download <a href="https://www.virtualbox.org/">VirtualBox</a> from https://www.virtualbox.org/wiki/Downloads and get the one that fits your Operative System.</li>
+  <li>Download the <a href="https://mega.nz/file/tFgRBYKB#Y3mUWb3g06f7GZwWOIpcVufh3KGGXbPCQ0pxAd09Ev0">VirtualBox image</a></li>
+  <li>Install virtualbox folloing one of the manuals
+    <ul>
+      <li>For windows follow the <a href="https://www.wikihow.com/Install-VirtualBox">Part 1 only</a></li>
+      <li>For MacOS follow the <a href="https://www.wikihow.com/Install-VirtualBox">Part 2 only</a></li>
+      <li>For Linux follow the <a href="https://www.wikihow.com/Install-VirtualBox">Part 3 only</a></li>
+    </ul>
+  </li>
+  <li>un7zip the downloaded VDI tar.xz file</li>
+  <li>Follow the osboxes guide to setup the extracted image https://www.osboxes.org/guide/ at the VirtualBox Section</li>
+</ol>
+
+<h3 id="setupmount-a-folder-to-share-between-guest-and-host">Setup/Mount a folder to share between guest and host.</h3>
+
+<p>To setup a shared folder betwwn guest and host use <a href="https://helpdeskgeek.com/virtualization/virtualbox-share-folder-host-guest/"><em>this guide</em></a></p>
+
+<blockquote>
+  <p><strong>NOTE:</strong>
+The guest folder is used for dev and git updates.
+The host folder is used to compile and run source code in guest folder.
+REMEMBER TO UPDATE THE <code class="language-plaintext highlighter-rouge">maxcoin.conf</code> file and update your PASSWORD.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="install-and-setup-the-virtual-machine-for-kvm-gnulinux">Install and Setup the virtual machine for KVM (GNU/Linux)</h2>
+
+<ol>
+  <li>Download the <a href="https://mega.nz/file/IAwFmA7a#mX0FeSGAdCJ-0LQ-iGoKQWESo6qKo3UqCqNGwOHGwrk">KVM image</a>.</li>
+  <li>Decompress the <a href="https://computingforgeeks.com/how-to-extract-xz-files-on-linux/">tar.xz image</a>.</li>
+  <li>Install kvm with qemu support by following one of this manuals
+    <ul>
+      <li><a href="https://help.ubuntu.com/community/KVM/Installation">Ubuntu Guide</a></li>
+      <li><a href="https://computingforgeeks.com/how-to-install-kvm-virtualization-on-debian/">Debian Guide</a></li>
+      <li><a href="https://phoenixnap.com/kb/install-kvm-centos">Centos KVM</a></li>
+      <li><a href="https://computingforgeeks.com/install-kvm-qemu-virt-manager-arch-manjar/">Arch Guide</a></li>
+    </ul>
+  </li>
+  <li>Import the qcow2 image from qemu, following <a href="https://ostechnix.com/create-a-kvm-virtual-machine-using-qcow2-image-in-linux/">this guide</a> from  the <code class="language-plaintext highlighter-rouge">2. Import Qcow2 images using Virt-manager</code>section.</li>
+</ol>
+
+<hr />
+
+<h2 id="install-and-setup-the-virtual-machine-for-vmware">Install and Setup the virtual machine for VMWare</h2>
+
+<p><strong>ToDo</strong></p>
+
+<h2 id="lastest-blockchain-backup">Lastest BlockChain Backup</h2>
+<p>In case your blockchain sync is going too slow, we have a temporal solution that is downloading the latest blockchain
+copy, Please refer to <a href="/posts/MIP2-informational/">MIP2</a> if you want to help us distribute it in a better way</p>
+
+<ol>
+  <li>Download the latest <a href="https://mega.nz/file/gZ5DxTiS#CplvVymfIP8NJUfWW0zFD23UwoePWXeuFhKfjjwHlV4">MaxCoin BlockChain</a></li>
+  <li>Verify the hash corresponds to <code class="language-plaintext highlighter-rouge">6d73ef55cc7f1964bea3da875cb0aff1a992ffd9325dd81c2645fd290c20db38</code>
+Execute the following command to the downloaded file:</li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$sha256sum</span> maxcoinBlockChainBack-1651801511.tar.xz 
+6d73ef55cc7f1964bea3da875cb0aff1a992ffd9325dd81c2645fd290c20db38  maxcoinBlockChainBack-1651801511.tar.xz
+</code></pre></div></div>
+<blockquote>
+  <p>Note: if the hash is diferent from this one, do not follow up and contact us at the <a href="https://t.me/maxcoinproject">telegram channel</a></p>
+</blockquote>
+
+<ol>
+  <li>move the file to your home directory and extract the file
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$cd</span> ~ <span class="o">&amp;&amp;</span> <span class="nb">tar </span>xvf maxcoinBlockChainBack-1651801511.tar.xz  
+</code></pre></div>    </div>
+  </li>
+  <li>execute the maxcoin-qt wallet
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$cd</span> ~/maxcoin <span class="o">&amp;&amp;</span> ./maxcoin-qt  
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="license">License</h2>
+
+<p><a href="./LICENSE"><strong>UNLICENSE</strong></a>. ?</p>
+
+<h2 id="contact">Contact.</h2>
+
+<p><strong><em>Developers</em></strong></p>
+<ul>
+  <li><a href="https://twitter.com/getmaxcoin">David Serrano</a></li>
+  <li><a href="mailto:p1r0@nethunters.xyz">p1r0</a></li>
+</ul>
+
+<h2 id="todoproposal">ToDo/Proposal</h2>
+
+<ul>
+  <li>Integrate dnsseed script and precopiled.</li>
+  <li>Integrate the linked manuals to the main howto and use them as references instead.</li>
+  <li>Check license for documentation.</li>
+</ul>
+
+:ET

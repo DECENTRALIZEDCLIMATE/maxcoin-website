@@ -1,0 +1,106 @@
+<p>by: <a href="https://twitter.com/graphics4crypto">https://twitter.com/graphics4crypto</a> and <a href="https://twitter.com/mxjmpbean">https://twitter.com/mxjmpbean</a></p>
+
+<h2 id="getting-started">Getting Started:</h2>
+
+<ul>
+  <li>Download and unzip ccminer 8.19</li>
+  <li>Open ccminer folder then create a text document ( Right click-&gt; New-&gt; Text Document).</li>
+  <li>New Text Document -&gt; Right click–&gt; Rename-&gt; MAXcoin-<poolname>.conf</poolname></li>
+  <li>then (RightClick -&gt;  Edit) copy &amp; paste, where <poolname> is the name of the pool you wish to connect</poolname></li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">{</span>
+“algo” : “keccak”,
+“url” : “stratum+tcp://pool_address:port”,
+“user” : “username.workername”,
+“pass” : “worker_password”
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Replace username.workername and worker password from your pool account.</li>
+  <li>Replace from “url” : stratum+tcp://pool:port with the pool address you with to use.</li>
+  <li>Save and close the file.</li>
+  <li>Duplicate this file for other pools editing your username.workername and worker password.</li>
+</ul>
+
+<h2 id="to-launch-the-miner-use-the-syntax">To launch the miner, use the syntax:</h2>
+
+<ul>
+  <li>ccminer -c MAXcoin-<poolname>.conf</poolname></li>
+</ul>
+
+<h2 id="with-thecoinpw">With thecoin.pw:</h2>
+
+<ul>
+  <li>You need to create an account and create a worker within your account.</li>
+  <li>Address: thecoin.pw</li>
+  <li>Port: 4100</li>
+  <li>Replace the username and worker from your created account.</li>
+  <li>Example of thecoin.pw config file:</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+“algo” : “keccak”,
+“url” : “stratum+tcp://thecoin.pw:4100”,
+“user” : “username.workername”,
+“pass” : “worker_password”
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="with-crypto-hub">With Crypto Hub:</h2>
+
+<ul>
+  <li>You need to create an account to access the pool.</li>
+  <li>Address: cryptohub.online</li>
+  <li>Port: 5000</li>
+  <li>Replace the username with the email that you used to register. If you wish to specify a worker name, place the worker name after the email, starting with :</li>
+  <li>Example of Crypto Hub config file:</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+“algo” : “keccak”,
+“url” : “stratum+tcp://cryptohub.online:5000”,
+“user” : “user@email.com:worker_name”,
+“pass” : “x”
+<span class="o">}</span>
+<span class="sb">```</span>sh
+
+<span class="c">## With zpool:</span>
+
+- Zpool pays <span class="k">in </span>BTC, so you need to pass your BTC address as username.
+- Address: keccak.mine.zpool.ca
+- Port: 5133
+- Example of zpool config file:
+
+<span class="sb">```</span>sh
+<span class="o">{</span>
+“algo” : “keccak”,
+“url” : “stratum+tcp://keccak.mine.zpool.ca:5133”,
+“user” : “18QDfuLJnEyHbCvioD39CkuhKZzMUDrRFS”,
+“pass” : “x”
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="with-miningpoolhub">With MiningPoolHub:</h2>
+
+<ul>
+  <li>You need to create an account and create a worker within your account.</li>
+  <li>Address: hub.miningpoolhub.com</li>
+  <li>Port: 20461</li>
+  <li>Replace the username and worker from your created account.</li>
+  <li>Example of MiningPoolHub config file:</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span>
+“algo” : “keccak”,
+“url” : “stratum+tcp://hub.miningpoolhub.com:20461”,
+“user” : “username.workername”,
+“pass” : “worker_password”
+<span class="o">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Happy mining!</li>
+</ul>
+

@@ -1,0 +1,76 @@
+I"Û<table>
+  <tbody>
+    <tr>
+      <td>MIP</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>SSL Update Fix</td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>A well known issue with libssl that requires to be fixed</td>
+    </tr>
+    <tr>
+      <td>author</td>
+      <td>p1r0 (@P1R)</td>
+    </tr>
+    <tr>
+      <td>discussion-to</td>
+      <td>https://github.com/orgs/Max-Coin/teams/maxcoin-community-devs</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>Draft</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>Security</td>
+    </tr>
+    <tr>
+      <td>created</td>
+      <td>2022-05-03</td>
+    </tr>
+    <tr>
+      <td>requires (optional)</td>
+      <td>MIP number(s)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="abstract">Abstract</h2>
+
+<p>This is a well known issue when the libssl got updated and most of the Linux distributions did update with it
+Multiple solutions came across different blockchains, since we are based on bitcoin and blakecoin we might as well do some of this updates</p>
+
+<h2 id="mip-workflow">MIP Workflow</h2>
+
+<ol>
+  <li>Research</li>
+  <li>Setup test enviorment</li>
+  <li>Fix</li>
+  <li>Build and Test</li>
+  <li>Release</li>
+</ol>
+
+<h2 id="comments">Comments</h2>
+
+<h4 id="follow-up-how-litecoin-solved-this-issue---p1r0">Follow up how LiteCoin solved this issue. - p1r0</h4>
+<h4 id="look-for-the-issue-displayed-by-github---p1r0">Look for the issue displayed by github - p1r0</h4>
+<p>[Security] RSA signature validation vulnerability on maleable encoded message in jsrsasign
+https://github.com/advisories/GHSA-27fj-mc8w-j9wg/dependabot?query=user:Max-Coin</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>https://github.com/BlueDragon747/Blakecoin/commit/07eb893ca4f63f1fa787b9256e1d29368c2af3bc</li>
+  <li>https://github.com/BlueDragon747/Blakecoin/commit/d8c747357cd6deb1b7e3d37e06441b5615e97e02</li>
+  <li>https://github.com/peercoin/peercoin/commit/5b09830e5de0f5105534e69dbf4acffb3255869b</li>
+  <li>https://github.com/bitcoin/bitcoin/issues/7086</li>
+  <li>https://github.com/cygnusxi/CurecoinSource/pull/48/commits/6b93af07005b90e4f6c5785c60c10c36fa52a333</li>
+  <li>https://github.com/bitcoin/bitcoin/pull/5949</li>
+  <li>https://github.com/bitcoin/bitcoin/pull/6954</li>
+</ul>
+
+:ET

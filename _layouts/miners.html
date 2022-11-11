@@ -1,0 +1,89 @@
+---
+layout: page
+# All the Categories of posts
+---
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-246639865-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-246639865-1');
+</script>
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//webpublishers.au/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+{% include lang.html %}
+
+<p><strong>Can I mine Maxcoin?</strong></p>
+<p>Absolutely!  Have a look at the following resources for supported mining <a href="/posts/maxcoin-miners-software/">software</a>, <a href="/categories/guides/">guides</a>, and <a href="/posts/maxcoin-miners-pools/">mining pools</a>. </p>
+<p>If you are a mining pool and would either link assistance with setup or to be listed here, please let the devs know in the <a href="https://t.me/maxcoinproject">telegram</a> channel.</p>
+{% assign HEAD_PREFIX = "h_" %}
+{% assign LIST_PREFIX = "l_" %}
+
+{% assign group_index = 0 %}
+
+{% assign sort_categories = site.categories | sort %}
+
+{% for category in sort_categories %}
+  {% assign category_name = category | first %}
+  {% assign posts_of_category = category | last %}
+  {% assign first_post = posts_of_category | first %}
+
+  {% if category_name == "Miners" %}
+    {% if category_name == first_post.categories[0] %}
+      {% assign sub_categories = "" | split: "" %}
+
+      {% for post in posts_of_category %}
+        {% assign second_category = post.categories[1] %}
+        {% if second_category %}
+          {% unless sub_categories contains second_category %}
+            {% assign sub_categories = sub_categories | push: second_category %}
+          {% endunless %}
+        {% endif %}
+    {% endfor %}
+
+    {% assign sub_categories = sub_categories | sort %}
+    {% assign sub_categories_size = sub_categories | size %}
+
+  <div id="page-category">
+    <h1 class="pl-lg-2">
+      <i class="far fa-folder-open fa-fw text-muted"></i>
+      {{ page.title }}
+      <span class="lead text-muted pl-2">{{ posts_size }}</span>
+    </h1>
+
+    <ul class="post-content pl-0">
+      {% assign post_df = site.data.locales[lang].date_format.post.long %}
+
+      {% for post in posts_of_category %} 
+      <li class="d-flex">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% comment %}
+        <span class="dash flex-grow-1"></span>
+        <span class="text-muted small">{{ post.date | date: post_df }}</span>
+        {% endcomment %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+    {% assign group_index = group_index | plus: 1 %}
+
+    {% endif %}
+  {% endif %}
+{% endfor %}
