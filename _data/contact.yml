@@ -10,6 +10,10 @@
   type: telegram
   icon: 'fab fa-telegram'   # icons powered by <https://fontawesome.com/>
   url:  'https://t.me/maxcoinproject'                  # Fill with your telegram url
+-
+  type: youtube
+  icon: "fab fa-youtube"
+  url: "https://www.youtube.com/@maxcoinproject"
 # -
 #   type: email
 #   icon: 'fas fa-envelope'
