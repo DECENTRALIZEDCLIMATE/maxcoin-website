@@ -1,0 +1,25 @@
+I"%<p>Maxcoin addresses use Schnorr for signing algorithm allowing exciting developments such as “native multisig” to be used, and an upgraded cryptographic field for key generation and an increase in performance.</p>
+
+<p>Maxcoin uses Secp256r1 as it’s cryptographic field to generate key pairs for addresses: A carefully-designed elliptical curve from which points are selected and used to initialise the public and private keys.</p>
+
+<p>The use of the Secp256k1 field is specifically recommended by NIST, an organisation that sets the standards for US government cryptography.</p>
+
+<h4 id="digital-signature">Digital Signature:</h4>
+<ul>
+  <li>Includes “Native Multisig”</li>
+  <li>A future feature for Bitcoin</li>
+  <li>Uses Secp256r1 (NIST recommended)</li>
+  <li>Increased Performance</li>
+  <li>Increased Scalability</li>
+  <li>Anti-Spam Attacks</li>
+  <li>Interactive Signature Aggregation</li>
+</ul>
+
+<p>Some Schnorr Resources:</p>
+<ol>
+  <li><a href="https://bitcoinmagazine.com/technical/scriptless-scripts-how-bitcoin-can-support-smart-contracts-without-smart-contracts">https://bitcoinmagazine.com/technical/scriptless-scripts-how-bitcoin-can-support-smart-contracts-without-smart-contracts</a></li>
+  <li><a href="https://bitcoinmagazine.com/culture/the-power-of-schnorr-the-signature-algorithm-to-increase-bitcoin-s-scale-and-privacy-1460642496">https://bitcoinmagazine.com/culture/the-power-of-schnorr-the-signature-algorithm-to-increase-bitcoin-s-scale-and-privacy-1460642496</a></li>
+  <li><a href="https://medium.com/scalar-capital/scriptless-scripts-25e18fd52ede">https://medium.com/scalar-capital/scriptless-scripts-25e18fd52ede</a></li>
+  <li><a href="https://medium.com/scalar-capital/schnorr-signatures-754038368b87">https://medium.com/scalar-capital/schnorr-signatures-754038368b87</a></li>
+</ol>
+:ET

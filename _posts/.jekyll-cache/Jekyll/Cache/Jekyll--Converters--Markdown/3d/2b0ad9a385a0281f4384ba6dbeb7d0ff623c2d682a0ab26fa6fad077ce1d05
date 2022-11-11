@@ -1,0 +1,86 @@
+I"Ð<h3 id="claymore-dual-mining-guide-max-eth-for-amd-nvidia">Claymore-Dual-Mining-Guide-MAX-ETH-for-AMD-nVIDIA</h3>
+
+<p>by: <a href="https://twitter.com/mxjmpbean">https://twitter.com/mxjmpbean</a></p>
+
+<h2 id="getting-started">Getting Started:</h2>
+
+<ul>
+  <li>Download Claymoreâ€™s Dual Ethereum AMD+NVIDIA GPU Miner for Windows from <a href="https://bitcointalk.org/index.php?topic=1433925.0">https://bitcointalk.org/index.php?topic=1433925.0</a></li>
+  <li>Unpack the downloaded file</li>
+  <li>In the unpacked directory, you will find start.bat, edit the file with the following:</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setx GPU_FORCE_64BIT_PTR 0
+setx GPU_MAX_HEAP_SIZE 100
+setx GPU_USE_SYNC_OBJECTS 1
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_SINGLE_ALLOC_PERCENT 100
+ethdcrminer64.exe <span class="nt">-epool</span> ethereum_pool:port <span class="nt">-ewal</span> username.worker <span class="nt">-epsw</span> worker_password <span class="nt">-esm</span> 3 <span class="nt">-dcoin</span> keccak <span class="nt">-dpool</span> maxcoin_pool:port <span class="nt">-dwal</span> username.worker <span class="nt">-dpsw</span> worker_password <span class="nt">-allpools</span> 1
+</code></pre></div></div>
+
+<ul>
+  <li>Since you are dual mining MaxCoin and Ethereum, you need to specifiy one pool for Ethereum and one pool for MaxCoin. For this guide purposes, we are going to set examples with MaxCoin pools, so you can use any Ethereum pool you wish. Replace ethereum_pool:port, maxcoin_pool:port, username.worker and worker_password according to the pools.</li>
+</ul>
+
+<h2 id="with-thecoinpw">With thecoin.pw:</h2>
+
+<ul>
+  <li>You need to create an account and create a worker within your account.</li>
+  <li>Address: thecoin.pw</li>
+  <li>Port: 4100</li>
+  <li>Replace the username and worker from your created account.</li>
+  <li>Example for thecoin.pw (1 line):
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ethdcrminer64.exe <span class="nt">-epool</span> ethereum_pool:port <span class="nt">-ewal</span> username.worker <span class="nt">-epsw</span> worker_password <span class="nt">-esm</span> 3 <span class="nt">-dcoin</span> keccak <span class="nt">-dpool</span> thecoin.pw:4100 <span class="nt">-dwal</span> username.worker <span class="nt">-dpsw</span> worker_password <span class="nt">-allpools</span> 1
+</code></pre></div>    </div>
+  </li>
+  <li>Save and run .bat file.</li>
+</ul>
+
+<h2 id="with-crypto-hub">With Crypto Hub:</h2>
+
+<ul>
+  <li>You need to create an account to access the pool.</li>
+  <li>Address: cryptohub.online</li>
+  <li>Port: 5000</li>
+  <li>Replace the username with the email that you used to register. If you wish to specify a worker name, place the worker name after the email, starting with :</li>
+  <li>Example for Crypto Hub (1 line):
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ethdcrminer64.exe <span class="nt">-epool</span> ethereum_pool:port <span class="nt">-ewal</span> username.worker <span class="nt">-epsw</span> worker_password <span class="nt">-esm</span> 3 <span class="nt">-dcoin</span> keccak <span class="nt">-dpool</span> cryptohub.online:5000 <span class="nt">-dwal</span> user@email.com:worker_name <span class="nt">-dpsw</span> x <span class="nt">-allpools</span> 1
+</code></pre></div>    </div>
+  </li>
+  <li>Save and run .bat file.</li>
+</ul>
+
+<h2 id="with-zpool">With zpool:</h2>
+
+<ul>
+  <li>Zpool pays in BTC, so you need to pass your BTC address as username. Zpool does not care about worker password.</li>
+  <li>Address: keccak.mine.zpool.ca</li>
+  <li>Port: 5133</li>
+  <li>Example for zpool (1 line):
+```sh</li>
+  <li>ethdcrminer64.exe -epool ethereum_pool:port -ewal username.worker -epsw worker_password -esm 3 -dcoin keccak -dpool keccak.mine.zpool.ca:5133 -dwal 18QDfuLJnEyHbCvioD39CkuhKZzMUDrRFS -dpsw x -allpools 1
+```</li>
+  <li>Save and run .bat file.</li>
+</ul>
+
+<h2 id="with-miningpoolhub">With MiningPoolHub:</h2>
+
+<ul>
+  <li>You need to create an account and create a worker within your account. This pool supports both MaxCoin and Ethereum, so you can use the same pool for both coins.</li>
+  <li>MAX pool: hub.miningpoolhub.com</li>
+  <li>Port: 20461</li>
+  <li>ETH pool: US: us-east.ethash-hub.miningpoolhub.com</li>
+  <li>Europe: europe.ethash-hub.miningpoolhub.com</li>
+  <li>Asia: asia.ethash-hub.miningpoolhub.com</li>
+  <li>Port: 20535</li>
+  <li>Replace the username and worker from your created account.</li>
+  <li>Example for MiningPoolHub (1 line):
+```sh</li>
+  <li>ethdcrminer64.exe -epool us-east.ethash-hub.miningpoolhub.com:20535 -ewal username.worker -epsw worker_password -esm 3 -dcoin keccak -dpool hub.miningpoolhub.com:20461 -dwal username.worker -dpsw worker_password -allpools 1
+```</li>
+  <li>Save and run .bat file.
+Here is a youtube vid of someone setting it up on <a href="https://www.youtube.com/watch?v=L613fkx8b-U&amp;feature=emb_imp_woyt">youtube</a>.</li>
+  <li>Happy Mining!</li>
+</ul>
+
+:ET

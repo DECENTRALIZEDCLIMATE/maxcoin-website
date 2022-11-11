@@ -1,0 +1,51 @@
+I"U	<p>by: <a href="https://twitter.com/mxjmpbean">https://twitter.com/mxjmpbean</a></p>
+
+<h2 id="getting-started">Getting Started:</h2>
+
+<ul>
+  <li>Download cpuminer-multi v1.3.1 from <a href="https://github.com/tpruvot/cpuminer-multi/releases">https://github.com/tpruvot/cpuminer-multi/releases</a> or our mining software page here.</li>
+  <li>*note: Not Maxcoin Repo</li>
+  <li>Unpack the downloaded file</li>
+  <li>In the unpacked directory, you will find 4 files: 3 exe and 1 bat.</li>
+  <li>Edit the file RUN-TimeTravel.bat to accommodate your hardware and mining pool.</li>
+  <li>Edit RUN-TimeTravel.bat Syntax:</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cpuminer-gw64-corei7 <span class="nt">-a</span> keccak <span class="nt">-o</span> stratum+tcp://pool_address:port <span class="nt">-u</span> your_pool_username.your_miner <span class="nt">-p</span> x
+</code></pre></div></div>
+
+<h2 id="with-miningpoolhub">With MiningPoolHub:</h2>
+
+<ul>
+  <li>Address: hub.miningpoolhub.com</li>
+  <li>Port: 12003</li>
+  <li>Replace the username and worker from your created account. Example:
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cpuminer-gw64-corei7 <span class="nt">-a</span> keccak <span class="nt">-o</span> stratum+tcp://hub.miningpoolhub.com:12003 <span class="nt">-u</span> user.worker <span class="nt">-p</span> x
+</code></pre></div>    </div>
+  </li>
+  <li>Save and run .bat file.</li>
+</ul>
+
+<h2 id="with-mineblocks">With Mineblocks:</h2>
+
+<ul>
+  <li>Address: stratum.mineblocks.co.uk</li>
+  <li>Port: 3027, Diff: 0.1</li>
+  <li>Port: 3028, Diff: 32</li>
+  <li>Replace the username with your wallet address.</li>
+  <li>Example:
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cpuminer-gw64-corei7 <span class="nt">-a</span> keccak <span class="nt">-o</span> stratum+tcp://stratum.mineblocks.co.uk:3027 <span class="nt">-u</span> mSpcDussPDMPSZAE5NzNLmerwdiDDiZ9nq <span class="nt">-p</span> x
+</code></pre></div>    </div>
+  </li>
+  <li>Save and run .bat file.</li>
+</ul>
+
+<h2 id="special-notes">Special Notes:</h2>
+
+<ul>
+  <li>Most modern CPUs will use cpuminer-gw64-corei7.exe (default in bat file)</li>
+  <li>Just replace the pool address and port for your favorite pool:</li>
+  <li>Happy mining!</li>
+</ul>
+
+:ET

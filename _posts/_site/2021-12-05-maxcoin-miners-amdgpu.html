@@ -1,0 +1,80 @@
+<p>by: <a href="https://twitter.com/mxjmpbean">https://twitter.com/mxjmpbean</a></p>
+
+<h2 id="getting-started">Getting Started:</h2>
+
+<ul>
+  <li>Download sgminer-gm v5.6.1 for PC</li>
+  <li>Unpack the downloaded file</li>
+  <li>In the unpacked directory, you will find several bat files.4 files.</li>
+  <li>Create a new bat file called MAXCOIN-START.bat with the following:</li>
+  <li>Create MAXCOIN-START.bat Syntax:</li>
+</ul>
+
+<h3 id="syntax">Syntax:</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setx GPU_FORCE_64BIT_PTR 0
+setx GPU_MAX_HEAP_SIZE 100
+setx GPU_USE_SYNC_OBJECTS 1
+setx GPU_MAX_ALLOC_PERCENT 100
+setx GPU_SINGLE_ALLOC_PERCENT 100
+sgminer.exe –no-submit-stale <span class="nt">-k</span> keccak <span class="nt">-o</span> stratum+tcp://pool_address:port <span class="nt">-u</span> user.worker <span class="nt">-p</span> worker_password
+</code></pre></div></div>
+
+<h2 id="with-thecoinpw">With thecoin.pw:</h2>
+
+<ul>
+  <li>You need to create an account and create a worker within your account.</li>
+  <li>Address: thecoin.pw</li>
+  <li>Port: 4100</li>
+  <li>Replace the username and worker from your created account.</li>
+  <li>Example of thecoin.pw (1 line):</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sgminer.exe –no-submit-stale <span class="nt">-k</span> keccak <span class="nt">-o</span> stratum+tcp://thecoin.pw:4100 <span class="nt">-u</span> user.worker <span class="nt">-p</span> worker_password
+</code></pre></div></div>
+<ul>
+  <li>Save and run .bat file.</li>
+</ul>
+
+<h2 id="with-crypto-hub">With Crypto Hub:</h2>
+
+<ul>
+  <li>You need to create an account to access the pool.</li>
+  <li>Address: cryptohub.online</li>
+  <li>Port: 5000</li>
+  <li>Replace the username with the email that you used to register. If you wish to specify a worker name, place the worker name after the email, starting with :</li>
+  <li>Example of Crypto Hub (1 line):
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sgminer.exe –no-submit-stale <span class="nt">-k</span> keccak <span class="nt">-o</span> stratum+tcp://cryptohub.online:5000 <span class="nt">-u</span> user@email.com:worker_name <span class="nt">-p</span> x
+</code></pre></div>    </div>
+  </li>
+  <li>Save and run .bat file.</li>
+</ul>
+
+<h2 id="with-zpool">With zpool:</h2>
+
+<ul>
+  <li>Zpool pays in BTC, so you need to pass your BTC address as username. Zpool does not care about worker password.</li>
+  <li>Address: keccak.mine.zpool.ca</li>
+  <li>Port: 5133</li>
+  <li>Example of zpool (1 line):
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sgminer.exe –no-submit-stale <span class="nt">-k</span> keccak <span class="nt">-o</span> stratum+tcp://keccak.mine.zpool.ca:5133 <span class="nt">-u</span> 18QDfuLJnEyHbCvioD39CkuhKZzMUDrRFS <span class="nt">-p</span> x
+</code></pre></div>    </div>
+  </li>
+  <li>Save and run .bat file.</li>
+</ul>
+
+<h2 id="with-miningpoolhub">With MiningPoolHub:</h2>
+
+<ul>
+  <li>You need to create an account and create a worker within your account.</li>
+  <li>Address: hub.miningpoolhub.com</li>
+  <li>Port: 20461</li>
+  <li>Replace the username and worker from your created account.</li>
+  <li>Example of MiningPoolHub (1 line):
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sgminer.exe –no-submit-stale <span class="nt">-k</span> keccak <span class="nt">-o</span> stratum+tcp://hub.miningpoolhub.com:20461 <span class="nt">-u</span> user.worker <span class="nt">-p</span> worker_password
+</code></pre></div>    </div>
+  </li>
+  <li>Save and run .bat file.</li>
+  <li>Happy mining!</li>
+</ul>
+

@@ -1,0 +1,166 @@
+<p>The propose of this document is to setup a methodology  to get maxcoin blockchain linked and functional to Thorchain.</p>
+
+<p>It is also important to note that since our philosophy is to be as decentralized as possible, we want to satisfy this by working with as many multiple true decentralized solutions as we can, which might include crosschain, 2nd Layers, DEXs, DEFIs and others.</p>
+
+<hr />
+
+<h2 id="overview">Overview</h2>
+
+<ol>
+  <li>1-way State Pegs allow syncing state from external chains</li>
+  <li>A State Machine to coordinate asset exchange logic and delegate redemptions</li>
+  <li>Bifröst Chain Client to convert redemptions into chain-specific transactions</li>
+  <li>A TSS protocol to enable distributed threshold key-signing<sup id="fnref:fn-nth-1" role="doc-noteref"><a href="#fn:fn-nth-1" class="footnote" rel="footnote">1</a></sup></li>
+</ol>
+
+<p><img src="/assets/img/posts/thorchain-layers.png" alt="" /></p>
+
+<hr />
+
+<h2 id="requirements-to-operate-on-thorchain">Requirements to operate on ThorChain</h2>
+
+<ol>
+  <li>Maxcoin wallet that integrates with Kubernetes and terraform</li>
+  <li>Create bifrost that works with Maxcoin</li>
+  <li>Have a testnet to also test it with the thorchain testnet</li>
+  <li>(optional) Provide Liquidity in Maxcoin(us) and Rune(us and miners)</li>
+  <li>(optional) Updates to wallets and some security audits by ourselfs en regards updates, maybe decentralize further</li>
+</ol>
+
+<hr />
+
+<h2 id="maxcoin-wallet-that-integrates-with-kubernetes-and-terraform">Maxcoin wallet that integrates with Kubernetes and terraform</h2>
+
+<blockquote>
+  <p>We need and easy way to create the wallet of maxcoin (Kubernetes Image)-p1r0</p>
+</blockquote>
+
+<p>THORNodes service the THORChain network, of which there is intended to be initially 99. Each THORNode is comprised of several independent servers in a cluster. All THORNodes communicate and operate in cooperation to create a cross-chain swapping network.[2]</p>
+
+<p>To set up a node, you have three choices:</p>
+
+<ol>
+  <li>Set up manually (not recommended unless you are an expert)</li>
+  <li>Set up via Kubernetes (recommended)</li>
+  <li>Set up via Provider (coming soon)</li>
+</ol>
+
+<h3 id="thornode-stack">THORNode Stack</h3>
+<p>Each THORNode is comprised of 5 major components.<sup id="fnref:fn-nth-2" role="doc-noteref"><a href="#fn:fn-nth-2" class="footnote" rel="footnote">2</a></sup></p>
+<ol>
+  <li>thornode  - this is a daemon that runs the THORChain chain itself and a HTTP server, that gives a RESTful API to the chain.</li>
+  <li>bifrost  - this daemon creates connections to remote chains (like Bitcoin, Ethereum, Binance, etc) to both observe activity on those chains (incoming/outgoing transactions), and also sign/broadcast outgoing transactions (moving funds on remote chains).</li>
+  <li>gateway : THORNode gateway proxy to get a single IP address for multiple deployments</li>
+  <li>midgard  - this daemon is a layer 2 REST API that provides front-end consumers with semi real-time rolled up data and analytics of the THORChain network. Most requests to the network will come through Midgard. This daemon is here to keep the chain itself from fielding large quantities of requests. You can think of it as a “read-only slave” to the chain. This keeps the resources of the network focused on processing transactions.</li>
+  <li>Full nodes - for every chain that is supported by the network, each THORNode operator will run their own full node of each chain (Bitcoin, Ethereum, Binance, etc).</li>
+</ol>
+
+<h3 id="terraform">Terraform</h3>
+<p>Terraform is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. Terraform codifies cloud APIs into declarative configuration files. <a href="https://www.terraform.io/docs/cli/install/apt.html">Follow up the instalation</a></p>
+
+<h2 id="create-bifrost-that-works-with-maxcoin">Create bifrost that works with Maxcoin</h2>
+<blockquote>
+  <p>We need to create our own bitfrost for maxcoin -p1r0</p>
+</blockquote>
+
+<p>How THORChain works
+The Bifröst Protocol: 1-way State Pegs Each node has a “Bifröst” service that deals with the nuances of connecting to each chain. Once nodes are 
+synced, they watch vault addresses. If they ever see an inbound transaction, they read it and convert it into a THORChain witness transaction.
+The witness transaction has the following parameters that are essentially the same for each chain, no matter the type:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type Tx struct {
+  ID          TxID    `json:"id"`2
+  Chain       Chain   `json:"chain"`3
+  FromAddress Address `json:"from_address"`4
+  ToAddress   Address `json:"to_address"`5
+  Coins       Coins   `json:"coins"`6
+  Gas         Gas     `json:"gas"`7
+  Memo        string  `json:"memo"`8
+}
+</code></pre></div></div>
+
+<p>THORChain processes each observed transaction and collects  signers  - essentially the keys of each node that reports a transaction that is 100% identical. Once a super-majority of nodes agree on a particular transaction, it moves from a  pending  state to a finalised state.<sup id="fnref:fn-nth-1:1" role="doc-noteref"><a href="#fn:fn-nth-1" class="footnote" rel="footnote">1</a></sup></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>type ObservedTx struct {1
+  Tx             common.Tx        `json:"tx"`2
+  Status         status           `json:"status"`3
+  OutHashes      common.TxIDs     `json:"out_hashes"` 4
+  BlockHeight    int64            `json:"block_height"`5
+  Signers        []sdk.AccAddress `json:"signers"` 6
+  ObservedPubKey common.PubKey    `json:"observed_pub_key"`7
+}
+</code></pre></div></div>
+
+<p><a href="https://gitlab.com/thorchain/bifrost">bifrost repo</a></p>
+
+<h2 id="have-a-testnet-to-also-test-it-with-the-thorchain-testnet">Have a testnet to also test it with the thorchain testnet</h2>
+<blockquote>
+  <p>We might require a testnet to use also with the torchain testnet -p1r0</p>
+</blockquote>
+
+<p>THORChain
+Connecting to THORChain
+How to connect to Midgard, THORNode and the base Tendermint layer.
+The active node IP addresses can be queried from this endpoint:
+https://testnet.seed.thorchain.info <sup id="fnref:fn-nth-3" role="doc-noteref"><a href="#fn:fn-nth-3" class="footnote" rel="footnote">3</a></sup></p>
+
+<p>The Network Information comes from three sources:</p>
+
+<ol>
+  <li>MIDGARD: Consumer information relating to swaps, pools, volume. DeFi dashboards, Wallets, Exchanges will primarily interact with Midgard.</li>
+  <li>THORNODE: Raw blockchain data relating to the THORChain state machine. THORChain block explorers will query THORChain-specific information here.</li>
+  <li>TENDERMINT: Tendermint standard data, used by all block explorers to query for base information.</li>
+</ol>
+
+<h2 id="provide-liquidity-in-maxcoinus-and-runeus-and-miners-optional">Provide Liquidity in Maxcoin(us) and Rune(us and miners) (optional)</h2>
+<p>Based on roles the offical page says the following</p>
+
+<p>There are four key roles in the system<sup id="fnref:fn-nth-5" role="doc-noteref"><a href="#fn:fn-nth-5" class="footnote" rel="footnote">4</a></sup>
+:</p>
+
+<ul>
+  <li>Liquidity providers who add liquidity to pools and earn fees and rewards</li>
+  <li>Swappers who use the liquidity to swap assets ad-hoc, paying fees</li>
+  <li>Traders who monitor pools and rebalance continually, paying fees but with the intent to earn a profit.</li>
+  <li>Node Operators who provide a bond and are paid to secure the system</li>
+</ul>
+
+<blockquote>
+  <p>Even if the liquidity providers are set as people that might want to earn fees and rewards, we might require to set an initial liquidity provided to setup at least a base price to start. <a href="https://docs.thorchain.org/roles">Roles</a> -p1r0</p>
+</blockquote>
+
+<h2 id="updates-to-wallets-and-some-security-audits-by-ourselfs-en-regards-updates-maybe-decentralize-further-optional">Updates to wallets and some security audits by ourselfs en regards updates, maybe decentralize further (optional)</h2>
+
+<p>We might need to do updates to wallets and some security audits by ourselfs en regards updates, maybe decentralize further</p>
+
+<blockquote>
+  <p>We might consider rebuild another genesis block and update this lines at the code, plus adding also the <a href="https://github.com/Max-Coin/maxcoin/blob/2af840024c8e81697252c2e24c268a8ce9165b8d/src/net.cpp#L1205">dnsseed and/or some nodes</a> -p1r0</p>
+</blockquote>
+
+<h2 id="contact">Contact.</h2>
+
+<p><strong><em>Developers</em></strong></p>
+
+<ul>
+  <li><a href="https://twitter.com/getmaxcoin">David Serrano</a></li>
+  <li><a href="mailto:p1r0@nethunters.xyz">p1r0</a></li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:fn-nth-1" role="doc-endnote">
+      <p>https://docs.thorchain.org/technology 2021-10-27 <a href="#fnref:fn-nth-1" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:fn-nth-1:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:fn-nth-2" role="doc-endnote">
+      <p>https://docs.thorchain.org/thornodes/overview 2021-10-27 <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:fn-nth-3" role="doc-endnote">
+      <p>https://www.terraform.io/docs/cli/install/apt.html 2021-10-28 <a href="#fnref:fn-nth-3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:fn-nth-5" role="doc-endnote">
+      <p>https://docs.thorchain.org/developers/connecting-to-thorchain 2021-10-28 <a href="#fnref:fn-nth-5" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

@@ -1,0 +1,168 @@
+<h2 id="install">Install</h2>
+
+<p><strong>First you need to have the python base system requirements</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get update
+$ sudo apt-get install build-essential python3 python3-dev python3-setuptools python3-pip virtualenv python3-multidict  python3-pytest libleveldb-dev
+</code></pre></div></div>
+
+<p><strong>set the virtual enviroment</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>virtualenv <span class="nt">-p</span> python3 myenv
+<span class="nv">$ </span><span class="nb">source </span>myenv/bin/activate
+</code></pre></div></div>
+
+<p>You can install electrumx after that. For testing, it is not necessarily needed, but that way you can see if all would work well or if there is something missing.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/spesmilo/electrumx
+<span class="nb">cd </span>electrumx
+<span class="nb">sudo </span>python3 setup.py <span class="nb">install</span>
+</code></pre></div></div>
+<h2 id="maxcoin-info">Maxcoin Info</h2>
+
+<h4 id="maxcoin-ports">Maxcoin Ports</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td>P2P / Testnet</td>
+      <td>8668 / 18668</td>
+    </tr>
+    <tr>
+      <td>RPC / Testnet</td>
+      <td>8669 / 18669</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="genesis">Genesis</h4>
+
+<p>0x0000002d0f86558a6e737a3a351043ee73906fe077692dfaa3c9328aaca21964</p>
+
+<h4 id="features">Features</h4>
+
+<p>Shape-shifting software defends against botnet hacks</p>
+
+<h4 id="algos">Algos</h4>
+
+<p>Schnorr / secp256r1</p>
+
+<h2 id="coinspy">coins.py</h2>
+
+<p>First we need some info from maxcoin that is in the Maxcoin Info section, plus the following:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">--user</span> maxcoinrpc <span class="nt">--data-binary</span> <span class="s1">'{"jsonrpc": "1.0", "id": "curltest", "method": "gettxoutsetinfo", "params": []}'</span> <span class="nt">-H</span> <span class="s1">'content-type text/plain;'</span> http://127.0.0.1:8080
+</code></pre></div></div>
+
+<p>Output by the syncing time:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "height": 4105438,
+  "bestblock": "000000000000d98cff8824ce362c934bd97de404621ef854a32a68e2f345e780",
+  "transactions": 887407,
+  "txouts": 2136713,
+  "bytes_serialized": 88311691,
+  "hash_serialized": "2d8d1d8acc008e2b6da524f21e0e9b2b1a10f5a8d25b7b9f62f86f9d0b7b6a31",
+  "total_amount": 75582558
+}
+</code></pre></div></div>
+
+<p>TX_COUNT is the value “transactions”, TX_COUNT_HEIGHT is “height” and TX_PER_BLOCK is the result of TX_COUNT/TX_COUNT_HEIGHT. The values don’t have to match 100%, so for example use 2 for TX_PER_BLOCK even if the result is &lt; 2.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>887407/4105438.0
+0.21615403764470442
+</code></pre></div></div>
+
+<h2 id="this-is-similar-on-how-to-add-maxcoin-into-the-coins">This is similar on how to add Maxcoin into the coins</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Maxcoin</span><span class="p">(</span><span class="n">Coin</span><span class="p">):</span>
+    <span class="n">NAME</span> <span class="o">=</span> <span class="s">"Maxcoin"</span>
+    <span class="n">SHORTNAME</span> <span class="o">=</span> <span class="s">"MAX"</span>
+    <span class="n">NET</span> <span class="o">=</span> <span class="s">"mainnet"</span>
+    <span class="n">P2PKH_VERBYTE</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s">"6E"</span><span class="p">)</span>
+    <span class="n">P2SH_VERBYTES</span> <span class="o">=</span> <span class="p">[</span><span class="nb">bytes</span><span class="p">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s">"70"</span><span class="p">)]</span>
+    <span class="n">WIF_BYTE</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s">"80"</span><span class="p">)</span>
+    <span class="n">GENESIS_HASH</span> <span class="o">=</span> <span class="p">(</span><span class="s">'0000002d0f86558a6e737a3a351043ee73906fe077692dfaa3c9328aaca21964'</span><span class="p">)</span>
+    <span class="n">DESERIALIZER</span> <span class="o">=</span> <span class="n">lib_tx</span><span class="p">.</span><span class="n">DeserializerSmartCash</span>
+    <span class="n">ENCODE_CHECK</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">Base58</span><span class="p">.</span><span class="n">encode_check</span><span class="p">,</span> <span class="n">hash_fn</span><span class="o">=</span><span class="n">lib_tx</span><span class="p">.</span><span class="n">DeserializerSmartCash</span><span class="p">.</span><span class="n">keccak</span><span class="p">)</span>
+    <span class="n">DECODE_CHECK</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">Base58</span><span class="p">.</span><span class="n">decode_check</span><span class="p">,</span><span class="n">hash_fn</span><span class="o">=</span><span class="n">lib_tx</span><span class="p">.</span><span class="n">DeserializerSmartCash</span><span class="p">.</span><span class="n">keccak</span><span class="p">)</span>
+    <span class="n">HEADER_HASH</span> <span class="o">=</span> <span class="n">lib_tx</span><span class="p">.</span><span class="n">DeserializerSmartCash</span><span class="p">.</span><span class="n">keccak</span>
+    <span class="n">TX_COUNT</span> <span class="o">=</span> <span class="mi">869998</span>
+    <span class="n">TX_COUNT_HEIGHT</span> <span class="o">=</span> <span class="mi">3982932</span>
+    <span class="n">TX_PER_BLOCK</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># actually 0.21843154741281046
+</span>    <span class="n">RPC_PORT</span> <span class="o">=</span> <span class="mi">8669</span> 
+    
+    <span class="o">@</span><span class="nb">classmethod</span>
+    <span class="k">def</span> <span class="nf">header_hash</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">header</span><span class="p">):</span>
+        <span class="s">'''Given a header return the hash.'''</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="p">.</span><span class="n">HEADER_HASH</span><span class="p">(</span><span class="n">header</span><span class="p">)</span>
+</code></pre></div></div>
+<blockquote>
+  <p>Note: VERIFY THAT THE DESERIALIZER ALSO WORKS FOR MAXCOIN:
+<a href="https://github.com/Max-Coin/maxcoin/blob/master/src/serialize.h">This might be useful to search and compare with the smart cash</a></p>
+</blockquote>
+
+<h2 id="maxcoin-test-block-in-electrumx">Maxcoin Test Block in ElectrumX</h2>
+
+<blockquote>
+  <p><a href="https://github.com/Max-Coin/maxcoin/blob/2af840024c8e81697252c2e24c268a8ce9165b8d/src/rpcblockchain.cpp">code section that generates it</a></p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "hash": "000000000000bc8fff5727a0d9e59632b07b21f72bce7950a928175e82fbd2d0",
+  "size": 185,
+  "height": 100000,
+  "merkleroot": "823f4b30b806e57a07144148d8f586264780bfc33f3632da8648b20ac9d2f014",
+  "tx": [
+    "823f4b30b806e57a07144148d8f586264780bfc33f3632da8648b20ac9d2f014",
+  ],
+  "time": 1394729531,
+  "nonce": 3303860448,
+  "bits": "1b019144",
+  "previousblockhash": "000000000000e84e3b6d60da9fc745eba5626a53fc79329c3fea8dd3a146287b",
+  "block": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff1303a08601065321e23b1a8b4901000112000000ffffffff010060343c020000001976a91430be99cd8e08ea2472e1dd47fae0928f71f0724688ac00000000"
+}
+</code></pre></div>  </div>
+</blockquote>
+
+<h3 id="if-the-rpc-is-running-in-the-main-net-you-can-also-test-the-output-from-block-10000-by-using-the-following-command">If the rpc is running in the main net you can also test the output from block 10000 by using the following command:</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">--user</span> maxcoinrpc <span class="nt">--data-binary</span> <span class="s1">'{"jsonrpc": "1.0", "id": "curltest", "method": "getblock", "params": ["000000000000bc8fff5727a0d9e59632b07b21f72bce7950a928175e82fbd2d0"]}'</span> <span class="nt">-H</span> <span class="s1">'content-type: text/plain;'</span> http://127.0.0.1:8080
+</code></pre></div></div>
+
+<p>Where the output might look like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "hash": "000000000000bc8fff5727a0d9e59632b07b21f72bce7950a928175e82fbd2d0",
+  "confirmations": 273264,
+  "size": 185,
+  "height": 100000,
+  "version": 2,
+  "merkleroot": "823f4b30b806e57a07144148d8f586264780bfc33f3632da8648b20ac9d2f014",
+  "tx": [
+    "823f4b30b806e57a07144148d8f586264780bfc33f3632da8648b20ac9d2f014"
+  ],
+  "time": 1394729531,
+  "nonce": 3303860448,
+  "bits": "1b019144",
+  "difficulty": 41810.1101982,
+  "previousblockhash": "000000000000e84e3b6d60da9fc745eba5626a53fc79329c3fea8dd3a146287b",
+  "nextblockhash": "0000000000014db84e52aa3aa03064bc096044bb37c7191fab91fe7d61604701"
+}
+</code></pre></div></div>
+<h2 id="todo">ToDo</h2>
+
+<p>Search for electrum implementations of 365coin, Slothcoin or Cryptometh that are Keccak SHA-3 Based
+ToDo: Check with Oliver how does the “Block” section in the example code works.</p>
+
+<p>https://github.com/Max-Coin/maxcoin/blob/master/src/base58.h#L275</p>
+
+<h2 id="sources">Sources</h2>
+
+<ol>
+  <li>
+    <p><a href="https://github.com/spesmilo/electrumx">https://github.com/spesmilo/electrumx</a></p>
+  </li>
+  <li>
+    <p><a href="https://gist.githubusercontent.com/cipig/af7ff886ca92746c3cac55e90cfcdddd/raw/9e8e1860cd31763e822607648d2d447810dfb4dc/electrumx_addcoin.md">https://gist.githubusercontent.com/cipig/af7ff886ca92746c3cac55e90cfcdddd/raw/9e8e1860cd31763e822607648d2d447810dfb4dc/electrumx_addcoin.md</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/SmartCash/electrum-smart-server/commit/cc4b3e0b4076f2482683fd244ba048415eaa5b90">https://github.com/SmartCash/electrum-smart-server/commit/cc4b3e0b4076f2482683fd244ba048415eaa5b90</a></p>
+  </li>
+</ol>
+

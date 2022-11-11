@@ -1,0 +1,125 @@
+I"�<h2 id="abstract">Abstract</h2>
+
+<p>A general guide to follow, which include templates, markdown standards and the governance model required to select editors and modify processes, approve or do changes might also require editor and DAO revision. The goal is to have quality Maxcoin Improvement Proposals.</p>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>The goal is to provide the Maxcoin Improvement Proposals Guideline</p>
+
+<h2 id="mip-types">MIP Types</h2>
+
+<ul>
+  <li>Standards</li>
+  <li>Informational</li>
+  <li>Processes</li>
+</ul>
+
+<h2 id="mip-format-and-structure-template">MIP format and structure template</h2>
+
+<p>MIPs should be written in markdown format. Based on our <a href="/posts/theme-chripy/">Maxcoin site markdown</a></p>
+
+<h3 id="structure-template">Structure Template</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>MIP</td>
+      <td>to be assigned</td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>The MIP title is a few words, not a complete sentence</td>
+    </tr>
+    <tr>
+      <td>description</td>
+      <td>Description is one full (short) sentence</td>
+    </tr>
+    <tr>
+      <td>author</td>
+      <td>a comma separated list of the author’s or authors’ name + GitHub username (in parenthesis), or name and email (in angle brackets).  Example, FirstName LastName (@GitHubUsername), FirstName LastName <a href="mailto:foo@bar.com">foo@bar.com</a>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)</td>
+    </tr>
+    <tr>
+      <td>discussion-to</td>
+      <td>URL</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>Draft</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>Standards Track, Meta, or Informational</td>
+    </tr>
+    <tr>
+      <td>created</td>
+      <td>date created on, in ISO 8601 (yyyy-mm-dd) format</td>
+    </tr>
+    <tr>
+      <td>requires (optional)</td>
+      <td>MIP number(s)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This is the suggested template for new MIPs.</p>
+
+<p>Note that an MIP number will be assigned by an editor. When opening a pull request to submit your MIP, please use an abbreviated title in the filename, <code class="language-plaintext highlighter-rouge">yyyy-mm-dd-mip[number]-draft.md</code>.</p>
+
+<p>The title should be 44 characters or less. It should not repeat the MIP number in title, irrespective of the category.</p>
+
+<h4 id="abstract-1">Abstract</h4>
+<p>Abstract is a multi-sentence (short paragraph) technical summary. This should be a very terse and human-readable version of the specification section. Someone should be able to read only the abstract to get the gist of what this specification does.</p>
+
+<h4 id="motivation-1">Motivation</h4>
+<p>The motivation section should describe the “why” of this MIP. What problem does it solve? Why should someone want to implement this standard? What benefit does it provide to the Maxcoin Project? What use cases does this MIP address?</p>
+
+<h4 id="specification">Specification</h4>
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119.</p>
+
+<p>The technical specification should describe the syntax and semantics of any new feature.</p>
+
+<h4 id="rationale">Rationale</h4>
+<p>The rationale fleshes out the specification by describing what motivated the design and why particular design decisions were made. It should describe alternate designs that were considered and related work, e.g. how the feature is supported in other languages.</p>
+
+<h4 id="backwards-compatibility">Backwards Compatibility</h4>
+<p>All MIPs that introduce backwards incompatibilities must include a section describing these incompatibilities and their severity. The MIP must explain how the author proposes to deal with these incompatibilities. MIP submissions without a sufficient backwards compatibility treatise may be rejected outright.</p>
+
+<h4 id="test-cases">Test Cases</h4>
+<p>Test cases for an implementation are mandatory for MIPs that are affecting consensus changes.  If the test suite is too large to reasonably be included inline, then consider adding it as one or more files in <code class="language-plaintext highlighter-rouge">/posts/yyyy-mm-dd-mip[number].md</code>.</p>
+
+<h4 id="reference-implementation">Reference Implementation</h4>
+<p>An optional section that contains a reference/example implementation that people can use to assist in understanding or implementing this specification.  If the implementation is too large to reasonably be included inline, then consider adding it as one or more files in <code class="language-plaintext highlighter-rouge">/posts/yyyy-mm-dd-mip[number].md</code>.</p>
+
+<h4 id="security-considerations">Security Considerations</h4>
+<p>All MIPs must contain a section that discusses the security implications/considerations relevant to the proposed change. Include information that might be important for security discussions, surfaces risks and can be used throughout the life cycle of the proposal. E.g. include security-relevant design decisions, concerns, important discussions, implementation-specific guidance and pitfalls, an outline of threats and risks and how they are being addressed. MIP submissions missing the “Security Considerations” section will be rejected. An EIP cannot proceed to status “Final” without a Security Considerations discussion deemed sufficient by the reviewers.</p>
+
+<h4 id="changelog">Changelog</h4>
+<p>Change logs date created on, in ISO 8601 (yyyy-mm-dd) format and a comment of changes</p>
+
+<h4 id="copyright">Copyright</h4>
+<p>TBA : Requires a compatible freeware version or FOSS based ones</p>
+
+<h2 id="mip-workflow">MIP Workflow</h2>
+
+<p>TBA: requires the Governance model</p>
+
+<h2 id="comments">Comments</h2>
+
+<h2 id="mip-editors">MIP Editors</h2>
+
+<p>TBA: requires the Governance model</p>
+
+<h2 id="changelog-1">Changelog</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>2021-12-15</td>
+      <td>first draft for MIP1 - Purpose and Guidelines</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="licenses">Licenses</h2>
+<p>TBA</p>
+:ET
