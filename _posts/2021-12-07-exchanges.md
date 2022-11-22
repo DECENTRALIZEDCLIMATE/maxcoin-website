@@ -15,11 +15,13 @@ As a community, we believe that when a cryptocurrency is allowed to grow organic
 ## List of Exchanges:
 ---
 
-  * [FreiExchange](https://freiexchange.com/market/MAX/BTC)
+  * [FreiExchange -> ](https://freiexchange.com/market/MAX/BTC) <button type="button" class="btn btn-outline-success"><a href="https://www.youtube.com/watch?v=6uHDyciRi4s">Get Maxcoin</a></button>
+
   * [BoaExchange ](https://www.boaexchange.com/market/MAX_BTC)
   * [Bisq](https://bisq.network/)
   * [Maxcoin ATM ](https://www.generalbytes.com/)
   * [Yobit](https://yobit.net/en/trade/MAX/BTC)
+  * [Freixlite](https://freixlite.com/market/MAX/LTC)
 
 > **Note:** Yobit Deposits and Withdrawals are currently Disabled
 
